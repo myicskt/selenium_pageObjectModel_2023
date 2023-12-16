@@ -22,6 +22,9 @@ public class Dashboard extends BasePage {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"customers\"]/li/a/span[text()='Add Customer']")
 	WebElement addCustomerButton;
 
+	@FindBy(how = How.XPATH, using = "//ul[@id='customers']/li/a/span[text()='List Customers']")
+	WebElement listCustomerButton;
+
 	public void validateDashboardPage(String dashboard) {
 		Assert.assertEquals(dashboardHeader.getText(), dashboard, "Dashboard pae is not found");
 	}
@@ -32,6 +35,10 @@ public class Dashboard extends BasePage {
 
 	public void clickOnAddcustomerButton() {
 		addCustomerButton.click();
+	}
+
+	public void clickOnLIstCustomersButton() {
+		listCustomerButton.click();
 	}
 
 }

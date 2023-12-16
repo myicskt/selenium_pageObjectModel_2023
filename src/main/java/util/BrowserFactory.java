@@ -9,13 +9,15 @@ import org.testng.annotations.Test;
 public class BrowserFactory {
 
 	static WebDriver driver;
+	static String propertiesFile = ".\\src\\main\\java\\config\\config.properties";
+	static PropertiesFileReader pro = new PropertiesFileReader(propertiesFile);
 
 	@Test
 	public static WebDriver init() {
-		System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
+		// System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().deleteAllCookies();
-		driver.get("https://www.codefios.com/ebilling/login");
+		driver.get(pro.getProperty("url"));
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;

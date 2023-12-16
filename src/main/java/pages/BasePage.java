@@ -9,8 +9,8 @@ import org.testng.Assert;
 
 public class BasePage {
 
-	public void validateDashboardPage(WebElement element, String expectedText, String errorMessage) {
-		Assert.assertEquals(element.getText(), expectedText, errorMessage);
+	public void validateElement(String actual, String expected, String errorMsg) {
+		Assert.assertEquals(actual, expected, errorMsg);
 	}
 
 	public int generateRandomNum(int boundNum) {

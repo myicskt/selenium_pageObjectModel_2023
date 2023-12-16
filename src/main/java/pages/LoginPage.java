@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 	WebDriver driver;
 
 	public LoginPage(WebDriver driver) {
@@ -45,6 +45,19 @@ public class LoginPage {
 		passwordElement.sendKeys(password);
 		signInButton.click();
 
+	}
+
+//for Alart massage 
+	public void validateUserAlertMsg(String alertValidationText) {
+		String actualAlertUserText = driver.switchTo().alert().getText();
+		validateElement(actualAlertUserText, alertValidationText, "Alert msg is not available!!");
+		driver.switchTo().alert().accept();
+	}
+
+	public void validatePasswordAlertMsg(String alertValidationText) {
+		String actualAlertPasswordText = driver.switchTo().alert().getText();
+		validateElement(actualAlertPasswordText, alertValidationText, "Alert msg is not available!!");
+		driver.switchTo().alert().accept();
 	}
 
 }

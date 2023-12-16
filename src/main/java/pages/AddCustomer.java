@@ -41,18 +41,21 @@ public class AddCustomer extends BasePage {
 	@FindBy(how = How.XPATH, using = "//div/div/select[@name='country']")
 	WebElement country;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"customer_group\"]")
+	@FindBy(how = How.XPATH, using = "//div/select[@name='customer_group']")
 	WebElement group;
 
 	@FindBy(how = How.XPATH, using = "//button[@id='save_btn']")
 	WebElement saveButton;
 
 	public void validateAddNewCustomerPage(String customerHeaderText) {
-		validateDashboardPage(addCustomerHedder, customerHeaderText, "Add acustomer page is not aviable");
+		String add = addCustomerHedder.getText();
+		validateElement(add, customerHeaderText, "Add acustomer page is not aviable");
 	}
 
-	public void insertFullName(String name) {
-		fullName.sendKeys(name + generateRandomNum(999));
+	public String insertFullName(String name) {
+		String generateFullname = name + generateRandomNum(999);
+		fullName.sendKeys(generateFullname);
+		return generateFullname;
 
 	}
 
